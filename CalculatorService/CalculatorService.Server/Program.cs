@@ -1,20 +1,21 @@
-using CalculatorService.CalculatorService.Server.Logging;
-using CalculatorService.CalculatorService.Server.Middleware;
-using CalculatorService.CalculatorService.Server.Services;
-using Microsoft.Extensions.Logging.Configuration;
+using CalculatorService.Client.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
-Logging.CongigureLogging(builder);
+// Registrar servicios
+builder.Services.AddHttpClient<ICalculatorClientService, CalculatorClientService>(client =>
+{
+	client.BaseAddress = new Uri("http://localhost:5000"); // URL del servidor
+});
 
-builder.Services.AddSingleton<ICalculator, Calculator>();
-builder.Services.AddSingleton<IJournal, Journal>();
+// Configurar controladores
 builder.Services.AddControllers();
 
 var app = builder.Build();
 
-app.UseMiddleware<Middleware>();
-
+// Configurar el pipeline de la aplicación
+app.UseRouting();
 app.MapControllers();
 
 app.Run();
