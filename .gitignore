@@ -1,0 +1,8 @@
+.vs/
+.github/
+**/bin/
+**/obj/
+
+*.user
+*.default*
+*.Development.*
