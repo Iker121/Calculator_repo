@@ -2,10 +2,10 @@
 {
 	public interface ICalculatorService
 	{
-		double Add(double[] sumando);
-		double Substract(double minuendo, double substraendo);
-		double Multiply(double[] factores);
-		(double cociente, double resto) Divide(double dividendo, double divisor);
-		double SquareRoot(double numero);
+		double Add(double[] addends);
+		double Substract(double minuend, double subtrahend);
+		double Multiply(double[] factors);
+		(double quotient, double remainder) Divide(double dividend, double divisor);
+		double SquareRoot(double number);
 	}
 }

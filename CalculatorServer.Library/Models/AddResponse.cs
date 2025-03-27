@@ -8,6 +8,6 @@ namespace CalculatorServer.Library
 {
 	public class AddResponse
 	{
-		public double Sum { get; set; }
+		public double Add { get; set; }
 	}
 }

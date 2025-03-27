@@ -9,8 +9,8 @@ namespace CalculatorServer.Library.Models
 {
 	public class MultiplyRequest
 	{
-		[Required(ErrorMessage = "Es necesario insertar valores")]
-		[MinLength(2, ErrorMessage = "Se necesitan minimo 2 factores")]
+		[Required(ErrorMessage = "Values must be entered")]
+		[MinLength(2, ErrorMessage = "A minimum of 2 factors are required")]
 		public double[] factors { get; set; } = Array.Empty<double>();
 	}
 }

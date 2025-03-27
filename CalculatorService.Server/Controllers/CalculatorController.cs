@@ -1,4 +1,4 @@
-﻿//using CalculatorService.Server.Models;
+﻿
 using CalculatorServer.Library;
 using CalculatorServer.Library.Models;
 using CalculatorService.Server.Services;
@@ -24,12 +24,12 @@ namespace CalculatorService.Server.Controllers
 				return BadRequest(ModelState);
 			try
 			{
-				var result = _calculator.Add(request.Sumandos);
+				var result = _calculator.Add(request.Addends);
 				if (!string.IsNullOrEmpty(trackingId))
 				{
-					_journal.AddEntry(trackingId, "Add", $"{string.Join("+", request.Sumandos)} = {result}");
+					_journal.AddEntry(trackingId, "Add", $"{string.Join("+", request.Addends)} = {result}");
 				}
-				return Ok(new AddResponse { Sum = result });
+				return Ok(new AddResponse { Add = result });
 			}
 			catch (Exception ex)
 			{
@@ -43,12 +43,12 @@ namespace CalculatorService.Server.Controllers
 				return BadRequest(ModelState);
 			try
 			{
-				var result = _calculator.Substract(request.minuendo, request.substraendo);
+				var result = _calculator.Substract(request.minuend, request.subtrahend);
 				if (!string.IsNullOrEmpty(trackingId))
 				{
-					_journal.AddEntry(trackingId, "Substract", $"{request.minuendo} - {request.substraendo} = {result}");
+					_journal.AddEntry(trackingId, "Substract", $"{request.minuend} - {request.subtrahend} = {result}");
 				}
-				return Ok(new SubstractResponse { Diferencia = result });
+				return Ok(new SubstractResponse { Diference = result });
 			}
 			catch (Exception ex)
 			{
@@ -68,7 +68,7 @@ namespace CalculatorService.Server.Controllers
 				{
 					_journal.AddEntry(trackingId, "Multiply", $" {string.Join(" * ", request.factors)} = {result}");
 				}
-				return Ok(new MultiplyResponse { producto = result });
+				return Ok(new MultiplyResponse { product = result });
 			}
 			catch (Exception ex)
 			{
@@ -84,13 +84,13 @@ namespace CalculatorService.Server.Controllers
 				return BadRequest(ModelState);
 			try
 			{
-				var result = _calculator.Divide(request.dividendo, request.divisor);
+				var result = _calculator.Divide(request.dividend, request.divisor);
 
 				if (!string.IsNullOrEmpty(trackingId))
 				{
-					_journal.AddEntry(trackingId, "Divide", $"{request.dividendo} / {request.divisor} = {result.cociente} (Resto: {result.resto})");
+					_journal.AddEntry(trackingId, "Divide", $"{request.dividend} / {request.divisor} = {result.quotient} (Remainder: {result.remainder})");
 				}
-				return Ok(new DivideResponse { cociente = result.cociente, resto = result.resto });
+				return Ok(new DivideResponse { quotient = result.remainder, remainder = result.remainder });
 			}
 			catch (Exception ex)
 			{
@@ -104,14 +104,14 @@ namespace CalculatorService.Server.Controllers
 				return BadRequest(ModelState);
 			try
 			{
-				var result = _calculator.SquareRoot(requeste.numero);
+				var result = _calculator.SquareRoot(requeste.number);
 
 				if (!string.IsNullOrEmpty(trackingId))
 				{
-					_journal.AddEntry(trackingId, "SquareRoot", $"√{requeste.numero} = {result}");
+					_journal.AddEntry(trackingId, "SquareRoot", $"√{requeste.number} = {result}");
 				}
 
-				return Ok(new SquareRootResponse { cuadrado = result });
+				return Ok(new SquareRootResponse { square = result });
 			}
 			catch (Exception ex)
 			{
@@ -129,7 +129,7 @@ namespace CalculatorService.Server.Controllers
 				return BadRequest(new ErrorResponse
 				{
 					ErrorStatus = 400,
-					ErrorMessage = "Se requiere un ID de tracking válido"
+					ErrorMessage = "Please provide a valid tracking ID"
 				});
 			}
 
@@ -138,7 +138,7 @@ namespace CalculatorService.Server.Controllers
 				var entries = _journal.GetEntries(request.Id);
 				return Ok(new JournalQueryResponse
 				{
-					operaciones = entries ?? new List<JournalEntry>()
+					operations = entries ?? new List<JournalEntry>()
 				});
 			}
 			catch (Exception ex)
@@ -146,7 +146,7 @@ namespace CalculatorService.Server.Controllers
 				return StatusCode(500, new ErrorResponse
 				{
 					ErrorStatus = 500,
-					ErrorMessage = $"Error interno: {ex.Message}"
+					ErrorMessage = $"An internal error occurred: {ex.Message}"
 				});
 			}
 		}

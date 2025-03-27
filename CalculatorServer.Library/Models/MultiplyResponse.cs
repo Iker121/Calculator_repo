@@ -8,6 +8,6 @@ namespace CalculatorServer.Library.Models
 {
 	public class MultiplyResponse
 	{
-		public double producto { get; set; }
+		public double product { get; set; }
 	}
 }

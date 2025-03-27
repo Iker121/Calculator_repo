@@ -9,8 +9,8 @@ namespace CalculatorServer.Library.Models
 {
 	public class SquareRootRequeste
 	{
-		[Required(ErrorMessage ="El numero es necesario")]
-		[Range(0, double.MaxValue, ErrorMessage ="El numero no puede ser negativo")]
-		public double numero { get; set; }
+		[Required(ErrorMessage = "The number is required")]
+		[Range(0, double.MaxValue, ErrorMessage = "The number cannot be negative")]
+		public double number { get; set; }
 	}
 }

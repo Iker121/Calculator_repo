@@ -19,39 +19,39 @@ namespace CalculatorService.Client.Services
 		}
 		public void SetTrackingId (string trackingId) => _trackingId = trackingId;
 
-		public async Task<double> AddAsync (double[] numeros)
+		public async Task<double> AddAsync (double[] numbers)
 		{
-			var request = new AddRequest {  Sumandos = numeros };
+			var request = new AddRequest {  Addends = numbers };
 			var response = await PostAsync <AddResponse>("calculator/add", request);
-			return response.Sum;
+			return response.Add;
 		}
 
-		public async Task<double> SubstractAsync(double minuendo, double substraendo)
+		public async Task<double> SubstractAsync(double minuend, double subtrahend)
 		{
-			var request = new SubstractRequest { minuendo = minuendo, substraendo = substraendo };
+			var request = new SubstractRequest { minuend = minuend, subtrahend = subtrahend };
 			var response = await PostAsync <SubstractResponse> ("calculator/sub",  request);
-			return response.Diferencia;
+			return response.Diference;
 		}
 
 		public async Task<double> MultiplyAsync(double[] factors)
 		{
 			var request = new MultiplyRequest { factors = factors };
 			var response = await PostAsync<MultiplyResponse>("calculator/mul", request);
-			return response.producto;
+			return response.product;
 		}
 
-		public async Task<(double cociente, double resto)> DivideAsync(double dividendo, double divisor)
+		public async Task<(double quotient, double remainder)> DivideAsync(double dividend, double divisor)
 		{
-			var request = new DivideRequest { dividendo = dividendo, divisor = divisor };
+			var request = new DivideRequest { dividend = dividend, divisor = divisor };
 			var response = await PostAsync<DivideResponse>("calculator/div", request);
-			return (response.cociente, response.resto);
+			return (response.quotient, response.remainder);
 		}
 
-		public async Task<double> SquareRootAsync(double numero)
+		public async Task<double> SquareRootAsync(double number)
 		{
-			var request = new SquareRootRequeste { numero = numero };
+			var request = new SquareRootRequeste { number = number };
 			var response = await PostAsync<SquareRootResponse>("calculator/sqrt", request);
-			return response.cuadrado;
+			return response.square;
 		}
 
 		public async Task<JournalQueryResponse> QueryJournalAsync(string trackingId)
@@ -92,11 +92,11 @@ namespace CalculatorService.Client.Services
 			}
 			catch (JsonException ex)
 			{
-				throw new Exception("Error al procesar el JSON", ex);
+				throw new Exception("JSON processing error", ex);
 			}
 			catch (TaskCanceledException ex)
 			{
-				throw new Exception("El servidor no responde", ex);
+				throw new Exception("Server is not responding", ex);
 			}
 		}
 	}

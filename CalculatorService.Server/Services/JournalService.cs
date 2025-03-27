@@ -14,8 +14,8 @@ namespace CalculatorService.Server.Services
 
 			var entry = new JournalEntry
 			{
-				operacion = operation,  
-				calculo = calculation,   
+				operation = operation,  
+				calculation = calculation,   
 				Date = DateTime.Now
 			};
 
@@ -42,7 +42,5 @@ namespace CalculatorService.Server.Services
 				? entries.OrderByDescending(e => e.Date).ToList()
 				: new List<JournalEntry>();
 		}
-
-		// Elimina el segundo GetEntries que está lanzando NotImplementedException
 	}
 }

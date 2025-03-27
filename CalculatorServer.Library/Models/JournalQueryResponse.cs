@@ -8,6 +8,6 @@ namespace CalculatorServer.Library.Models
 {
 	public class JournalQueryResponse
 	{
-		public List<JournalEntry> operaciones { get; set; } = new();
+		public List<JournalEntry> operations { get; set; } = new();
 	}
 }

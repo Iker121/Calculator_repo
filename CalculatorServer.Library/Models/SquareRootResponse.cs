@@ -8,6 +8,6 @@ namespace CalculatorServer.Library.Models
 {
 	public class SquareRootResponse
 	{
-		public double cuadrado { get; set; }
+		public double square { get; set; }
 	}
 }

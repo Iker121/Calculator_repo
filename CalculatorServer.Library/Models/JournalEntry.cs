@@ -8,8 +8,8 @@ namespace CalculatorServer.Library.Models
 {
 	public class JournalEntry
 	{
-		public string operacion { get; set; } = string.Empty;
-		public string calculo { get; set; } = string.Empty;
+		public string operation { get; set; } = string.Empty;
+		public string calculation { get; set; } = string.Empty;
 		public DateTime Date { get; set; }
 
 	}

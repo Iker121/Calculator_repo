@@ -9,8 +9,8 @@ namespace CalculatorServer.Library
 {
 	public class AddRequest
 	{
-		[Required(ErrorMessage = "El array de sumandos es requerido")]
-		[MinLength(2, ErrorMessage = "Se requieren al menos 2 numeros para la suma")]
-		public double[] Sumandos { get; set; } //Array.Empty<double>();
+		[Required(ErrorMessage = "The addends array is required")]
+		[MinLength(2, ErrorMessage = "At least 2 numbers are required for the sum")]
+		public double[] Addends { get; set; } //Array.Empty<double>();
 	}
 }

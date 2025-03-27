@@ -2,34 +2,38 @@
 {
 	public class CalculatorService : ICalculatorService
 	{
-		public double Add(double[] sumandos)
+		public double Add(double[] addends)
 		{
-			if (sumandos == null || sumandos.Length < 2)
-				throw new ArgumentException("Se necesitan minimo 2 numeros");
-			return sumandos.Sum();
+			if (addends == null || addends.Length < 2)
+				throw new ArgumentException("At least 2 numbers are required");
+			return addends.Sum();
 		}
-		public double Substract(double minuendo, double substraendo )
-		{
-			return minuendo - substraendo;
-		}
-		public double Multiply(double[] factores)
-		{
-			if (factores == null || factores.Length < 2)
-				throw new ArgumentException("Se necesitan minimo 2 numeros");
-			return factores.Aggregate(1.0, (acc, val)=> acc * val);
-		}
-		public (double cociente, double resto) Divide (double dividendo, double divisor)
-		{
-			if (divisor == 0) 
-				throw new DivideByZeroException("No puede ser 0");
 
-			return (dividendo / divisor, dividendo % divisor);
-		}
-		public double SquareRoot (double numero)
+		public double Substract(double minuend, double subtrahend)
 		{
-			if (numero < 0) 
-				throw new ArgumentException("No puede ser negativo");
-			return Math.Sqrt(numero);
+			return minuend - subtrahend;
+		}
+
+		public double Multiply(double[] factors)
+		{
+			if (factors == null || factors.Length < 2)
+				throw new ArgumentException("At least 2 numbers are required");
+			return factors.Aggregate(1.0, (acc, val) => acc * val);
+		}
+
+		public (double quotient, double remainder) Divide(double dividend, double divisor)
+		{
+			if (divisor == 0)
+				throw new DivideByZeroException("Cannot be 0");
+
+			return (dividend / divisor, dividend % divisor);
+		}
+
+		public double SquareRoot(double number)
+		{
+			if (number < 0)
+				throw new ArgumentException("Cannot be negative");
+			return Math.Sqrt(number);
 		}
 	}
 }

@@ -9,10 +9,10 @@ namespace CalculatorServer.Library.Models
 {
 	public class SubstractRequest
 	{
-		[Required(ErrorMessage = "Minuendo necesario")]
-		public double minuendo { get; set; }
+		[Required(ErrorMessage = "The minuend must be provided")]
+		public double minuend { get; set; }
 
-		[Required(ErrorMessage = "Substraendo necesario")]
-		public double substraendo { get; set; }
+		[Required(ErrorMessage = "The subtrahend must be specified")]
+		public double subtrahend { get; set; }
 	}
 }

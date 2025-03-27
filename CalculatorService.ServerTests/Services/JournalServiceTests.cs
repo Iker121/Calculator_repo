@@ -29,8 +29,8 @@ namespace CalculatorService.Server.Services.Tests
 			var entries = _journalService.GetEntries(trackingId);
 
 			Assert.AreEqual(1, entries.Count);
-			Assert.AreEqual(operation, entries[0].operacion);
-			Assert.AreEqual(calculation, entries[0].calculo);
+			Assert.AreEqual(operation, entries[0].operation);
+			Assert.AreEqual(calculation, entries[0].calculation);
 		}
 
 		[TestMethod]
@@ -43,7 +43,7 @@ namespace CalculatorService.Server.Services.Tests
 			var entries = _journalService.GetEntries(trackingId);
 
 			Assert.AreEqual(2, entries.Count);
-			Assert.AreEqual("Subtract", entries[1].operacion);
+			Assert.AreEqual("Subtract", entries[1].operation);
 		}
 		[TestMethod]
 		public void GetEntries_UnknownTrackingId_ReturnsEmptyList()
@@ -75,9 +75,9 @@ namespace CalculatorService.Server.Services.Tests
 			var entries = _journalService.GetEntries(trackingId);
 
 			Assert.AreEqual(2,entries.Count);
-			Assert.AreEqual("Second", entries[0].operacion);
+			Assert.AreEqual("Second", entries[0].operation);
 
-			Assert.AreEqual("First", entries[1].operacion);
+			Assert.AreEqual("First", entries[1].operation);
 		}
 	}
 }

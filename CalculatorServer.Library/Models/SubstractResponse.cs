@@ -8,6 +8,6 @@ namespace CalculatorServer.Library.Models
 {
 	public class SubstractResponse
 	{
-		public double Diferencia { get; set; }
+		public double Diference { get; set; }
 	}
 }
